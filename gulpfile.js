@@ -43,17 +43,14 @@ const watchTask = function () {
   watch(srcGlob('**/*.scss', '!fonts/**/*.scss'), buildTasks.css);
   watch(srcGlob('fonts/**/*.scss'), parallel(buildTasks.css, buildTasks.fonts));
   watch(srcGlob('**/*.@(js|es6)', '!*.js'), buildTasks.js);
-  // watch(srcGlob('**/*.png', '**/*.gif', '**/*.jpg', '**/*.jpeg', '**/*.svg', '**/*.swf'), copyTasks.copyAssets)
 };
 
 // Serve
 const serveTasks = function () {
   browserSync.init({
-    // ? You can change server path variable from build-config.js file
     server: serverPath
   });
   watch([
-    // ? You can change add/remove files/folders watch paths in below array
     'html/**/*.html',
     'html-starter/**/*.html',
     'assets/vendor/css/*.css',
